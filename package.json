@@ -1,0 +1,39 @@
+{
+    "webexe_settings": {
+        "linux-x32": false, 
+        "download_dir": "C:\\Users\\fotitud\\Downloads\\Web2ExeWin-v0.1.8b\\Web2ExeWin\\files\\downloads", 
+        "windows": true, 
+        "mac": false, 
+        "nw_version": "0.10.5", 
+        "force_download": false, 
+        "linux-x64": false
+    }, 
+    "description": "", 
+    "nodejs": true, 
+    "single-instance": true, 
+    "webkit": {
+        "page-cache": false, 
+        "java": false, 
+        "plugin": false
+    }, 
+    "window": {
+        "fullscreen": false, 
+        "resizable": false, 
+        "title": "Miu", 
+        "always-on-top": false, 
+        "frame": false, 
+        "height": 640, 
+        "visible": true, 
+        "as_desktop": true, 
+        "position": "", 
+        "show_in_taskbar": true, 
+        "width": 1080, 
+        "toolbar": false, 
+        "icon": "miu.png"
+    }, 
+    "version": "0.1.0", 
+    "node-main": "", 
+    "keywords": [], 
+    "main": "index.html", 
+    "name": "Miu"
+}
