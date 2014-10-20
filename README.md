@@ -21,4 +21,4 @@ https://github.com/rogerwang/node-webkit/
 
 --
 
-Licensed under MIT licese.
+Licensed under MIT license.
