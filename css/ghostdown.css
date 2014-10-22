@@ -1,8 +1,5 @@
-html {
-	font: 62.5%/1.65 "Helvetica Neue", Helvetica , serif;
-}
 body {	
-	font-size: 1.3rem;
+	font-size: 16px;
 	overflow: hidden;
 }
 .CodeMirror {
@@ -78,10 +75,11 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 	color: #a50
 }
 .cm-s-default .cm-string {
-	color: #a11
+	color: #a11;
+	font-size: 14px;
 }
 .cm-s-default .cm-string-2 {
-	color: #f50
+	color: #f50;
 }
 .cm-s-default .cm-meta {
 	color: #555
@@ -99,7 +97,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 	color: #997
 }
 .cm-s-default .cm-tag {
-	color: #170
+	color: #4e279a
 }
 .cm-s-default .cm-attribute {
 	color: #00c
@@ -108,7 +106,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 	color: blue
 }
 .cm-s-default .cm-quote {
-	color: #090
+	color: #93a1a1
 }
 .cm-s-default .cm-hr {
 	color: #999
@@ -123,7 +121,17 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 	color: #292
 }
 .cm-header, .cm-strong {
-	font-weight: bold
+	font-weight: bold;
+	color: #dc322f;
+}
+.features .editor .cm-header2{
+	font-size: 20px;
+}
+.features .editor .cm-header3{
+	font-size: 18px;
+}
+.features .editor .cm-header4{
+	font-size: 16px;
 }
 .cm-em {
 	font-style: italic
@@ -333,7 +341,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 	font-size: 16px;
 	right: 0;
 	box-shadow: #edece4 -1px 0 0;
-	min-height: 100vmin;
+	min-height: 600px;
 }
 .entry-preview img{
 	max-width: 100%;
@@ -495,8 +503,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 	right: 0;
 	bottom: 0;
 	padding-top: 20px;
-	font-family: Inconsolata, monospace;
-	font-size: 1.4rem;
+	font-family: 'Menlo',Helvetica, monospace, Serif;
+	font-size: 16px;
 	line-height: 1.3em;
 	color: #6c7379
 }
@@ -536,13 +544,14 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 	padding: 0 15px
 }
 }
-.features .editor .cm-header {
-	color: #000;
-	font-size: 2rem;
+.features .editor .cm-header,.cm-header2,.cm-header3,.cm-header4 {
+		color: #6c71c4;
+	font-weight: bold;
+	font-size: 24px;
 	line-height: 1.4em
 }
 .features .editor .cm-string, .features .editor .cm-link, .features .editor .cm-comment, .features .editor .cm-quote {
-	color: #000
+	color: #93a1a1
 }
 @media (max-width: 860px), (max-width: 860px) {
 .features .editor .entry-preview .floatingheader {

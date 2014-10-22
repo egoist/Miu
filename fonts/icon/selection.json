@@ -4,6 +4,36 @@
 		{
 			"icon": {
 				"paths": [
+					"M128 554.667h85.333v-85.333h-85.333v85.333zM128 725.333h85.333v-85.333h-85.333v85.333zM128 384h85.333v-85.333h-85.333v85.333zM298.667 554.667h597.333v-85.333h-597.333v85.333zM298.667 725.333h597.333v-85.333h-597.333v85.333zM298.667 298.667v85.333h597.333v-85.333h-597.333z"
+				],
+				"attrs": [
+					{
+						"opacity": 1,
+						"visibility": false
+					}
+				],
+				"grid": 24
+			},
+			"attrs": [
+				{
+					"opacity": 1,
+					"visibility": false
+				}
+			],
+			"properties": {
+				"order": 1,
+				"id": 0,
+				"prevSize": 24,
+				"code": 58880,
+				"name": "menu",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
 					"M831.68 193.344l-0.128 311.52-119.424-119.456-142.528 142.56-85.28-85.28 142.528-142.528-108.288-108.256 313.12 1.44zM367.808 729.76l103.616 101.824-311.104 0.544 0.128-309.76 122.080 122.080 157.6-157.568 85.28 85.28-157.6 157.6z"
 				],
 				"attrs": [
@@ -25,10 +55,10 @@
 				"id": 0,
 				"prevSize": 32,
 				"code": 58881,
-				"name": "uniE601",
+				"name": "fullscreen",
 				"ligatures": ""
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"iconIdx": 0
 		}
 	],
@@ -37,40 +67,25 @@
 		"name": "icomoon"
 	},
 	"preferences": {
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showSVGs": true,
 		"fontPref": {
 			"prefix": "icon-",
 			"metadata": {
 				"fontFamily": "icomoon"
 			},
-			"showGlyphs": true,
 			"metrics": {
 				"emSize": 1024,
 				"baseline": 6.25,
 				"whitespace": 50
-			},
-			"resetPoint": 58880,
-			"showQuickUse": true,
-			"quickUsageToken": false,
-			"showMetrics": true,
-			"showMetadata": false
+			}
 		},
 		"imagePref": {
-			"color": 0,
-			"height": 32,
-			"columns": 16,
-			"margin": 16,
-			"png": false,
-			"sprites": true,
 			"prefix": "icon-"
 		},
 		"historySize": 100,
 		"showCodes": true,
-		"gridSize": 16,
-		"showLiga": false,
-		"showGrid": true,
-		"showGlyphs": true,
-		"showQuickUse": true,
-		"showSVGs": true,
 		"search": ""
 	}
 }

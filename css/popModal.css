@@ -61,7 +61,7 @@ Github: https://github.com/vadimsva/popModal
 .notifyModal.leftBottom {bottom:0;left:0}
 .notifyModal.centerBottom {bottom:0;left:0;right:0}
 .notifyModal.rightBottom {bottom:0;right:0}
-.notifyModal.center .notifyModal_content {left:0;right:0;top:-250px}
+.notifyModal.center .notifyModal_content {left:0;right:0;top:-270px}
 .notifyModal.leftTop .notifyModal_content {left:20px;top:20px}
 .notifyModal.centerTop .notifyModal_content {left:0;right:0;top:20px}
 .notifyModal.rightTop .notifyModal_content {right:20px;top:20px}

@@ -3613,10 +3613,12 @@ window.CodeMirror = (function() {
     eol: function() {return this.pos >= this.string.length;},
     sol: function() {return this.pos == 0;},
     peek: function() {return this.string.charAt(this.pos) || undefined;},
+    
     next: function() {
       if (this.pos < this.string.length)
         return this.string.charAt(this.pos++);
     },
+    eatsub: function(end) {return this.string.substring(0,end);},
     eat: function(match) {
       var ch = this.string.charAt(this.pos);
       if (typeof match == "string") var ok = ch == match;
@@ -5855,6 +5857,9 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   thisLineHasContent = false;
 
   var header   = 'header'
+  ,   header2  = 'header2'
+  ,   header3  = 'header3'
+  ,   header4  = 'header4'
   ,   code     = 'comment'
   ,   quote    = 'quote'
   ,   list     = 'string'
@@ -5920,8 +5925,15 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
       return code;
     } else if (stream.eatSpace()) {
       return null;
-    } else if (stream.peek() === '#' || (prevLineHasContent && stream.match(headerRE)) ) {
+    } else if (stream.eatsub(1) === '#' || (prevLineHasContent && stream.match(headerRE)) ) {
       state.header = true;
+      if(stream.eatsub(1) === '#') state.headerType = header;
+      if(stream.eatsub(2) === '##') state.headerType = header2;
+      if(stream.eatsub(3) === '###') state.headerType = header3;
+      else if(stream.eatsub(3) === '---') state.headerType = header;
+      if(stream.eatsub(4) === '####') state.headerType = header4;
+
+      
     } else if (stream.eat('>')) {
       state.indentation++;
       state.quote = true;
@@ -5982,7 +5994,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
 
     if (state.code) { styles.push(code); }
 
-    if (state.header) { styles.push(header); }
+    if (state.header) { styles.push(state.headerType); }
     if (state.quote) { styles.push(quote); }
     if (state.list !== false) { styles.push(list); }
 
@@ -6384,6 +6396,7 @@ var Showdown={extensions:{}},forEach=Showdown.forEach=function(a,b){if(typeof a.
         // Sync scrolling
         function syncScroll(e) {
             // vars
+
             var $codeViewport = $(e.target),
                 $previewViewport = $('.entry-preview-content'),
                 $codeContent = $('.CodeMirror-sizer'),
@@ -6401,7 +6414,6 @@ var Showdown={extensions:{}},forEach=Showdown.forEach=function(a,b){if(typeof a.
 
         // TODO: Debounce
         $('.CodeMirror-scroll').on('scroll', syncScroll);
-
         // Shadow on Markdown if scrolled
         $('.CodeMirror-scroll').scroll(function() {
             if ($('.CodeMirror-scroll').scrollTop() > 10) {

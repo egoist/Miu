@@ -3,35 +3,31 @@
   <head>
   <meta charset="utf-8">
     <title>Miu</title>
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    	 <script src="js/jquery-ui.js"></script>
-
-    <script type="text/javascript" src="js/ghostdown.js"></script>
-	<link href="css/ghostdown.css" media="all" rel="stylesheet">
+    
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/ghostdown.css">
 	<link rel="stylesheet" type="text/css" href="fonts/icon/style.css">
-	<script type="text/javascript" src="js/jquery.ghostdown.js"></script>
-	<script type="text/javascript" src="js/markdown_dom_parser.js"></script>	
-	<script type="text/javascript" src="js/html2markdown.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/popModal.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/popModal.css">
+	<link rel="stylesheet" type="text/css" href="themes/preview/Github2.css">
+	<link rel="stylesheet" type="text/css" href="https://fonts.lug.ustc.edu.cn/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400">
 
   </head>
   <body>
+  <div class="sketch"></div>
   <div class="override" style="display:none"></div>
   <div id="about" style="display:none">
   <div>
   <img src="miu.png">
   </div>
   	<a href="#" onclick="home()" class="logo">Miu</a>
-  	<p>Version. Alpha <span id="version">0.1.0</span> (build20141020)</p>
+  	<p>Version. Alpha <span id="version">0.1.1</span> (build20141020)</p>
   	<p>&copy; 2014 By 0x142857</p>
   	<p style="color:#999;font-size:13px">Do have faith in Mikasa Arkerman</p>
   	<p style="color:#999;font-size:13px" class="checkUpdate">正在检查更新</p>
   </div>
+  <div class="wrap">
   <header class="header">
- 
+ <span class="icon-menu" id="settings-trigger"></span>
   <div class="fl cps">
 				<a href="javascript:;" onclick="closeWindow()" class="osx-window-btn red"></a>
                 <a href="javascript:;" onclick="miniWindow()" class="osx-window-btn yellow"></a>
@@ -42,9 +38,11 @@
                 		<b>文件</b>
                 		
                 		</a>
-                		<ul class="dropdown topDropdown">
+                		<ul class="dropdown file-dropdown topDropdown">
+                			<li><span id="new-trigger">新建</span></li>
                 			<li><span id="open-trigger">打开</span></li>
                 			<li><span id="save-trigger">保存</span></li>
+                			<li><span id="savenew-trigger">另存为</span></li>
                 		</ul>
                 		</li>
                 		<li id="tool-action" class="topAction"><a href="#" id="tool-action-href" class="topActionHref">
@@ -59,10 +57,11 @@
                 		</li>
                 		
                 		<input type="file" id="open_file" accept=".md,.markdown">
-                		<input style="display:none" type="file" id="save_file" nwsaveas>
+                		<input style="display:none" type="file" id="save_file" accept=".md,.markdown" nwsaveas>
                 		<input style="display:none" type="file" id="save_html" accept=".html" nwsaveas>
                 		<input style="display:none" type="file" id="save_pdf" nwsaveas accept=".pdf">
                 		<input style="display:none" type="file" id="save_doc" accept=".doc" nwsaveas>
+                		<input style="display:none" type="file" id="savenew_file" accept=".md" nwsaveas>
                 		<li>
                 			<a href="javascript:;" id="about-trigger">关于</a>
                 		</li>
@@ -72,9 +71,9 @@
   		<!--<a href="javascript:;" onclick="fullScreen()" class="full">无扰</a>-->
   	<div class="fr opts">
   		<span class="entry-word-count fl">0 Words</span>
-  		<a href="javascript:;" onclick="fullScreen()"><span class="icon-uniE601 expand"></span></a>
+  		<a href="javascript:;" onclick="fullScreen()"><span class="icon-fullscreen expand"></span></a>
   	</div>
- <h1 class="current-file" data-save="false">Miu.md</h1>
+ <h1 class="current-file" data-save="false">Miu</h1>
   </header>
     <div class="features">
   <section class="editor">
@@ -83,32 +82,7 @@
 
 					<section class="entry-markdown">
 						<section class="entry-markdown-content">
-<textarea id="original-file">#Miu
-
-![Miu](miu.png)
-
-* Starting to take notes with a cool tool when using Windows.
-* Features with live preview, auto-save, cloud sync, sharing to Weibo
-* Built for Windows users who can't afford to get a Mac
-* More features are coming with love
-
-Miu /mju:/ stands for _Markdown editor for Windows(Mew)_
-
-This is built with Node-webkit and inspired by Mou the editor, thanks to the community.
-
-Give it a try! Start writing with Miu on Windows, go kick my ass if you feel no cool!
-
->生活、开心比工作更重要
-
-**Something need to know before use**
-
-- Ctrl+S : Save
-- Auto Save : by every minute
-
----
-
-Contact me: i@0x142857.com
-</textarea>
+<textarea id="original-file"></textarea>
 						</section>
 					</section>
 					<section class="entry-preview active">
@@ -121,13 +95,26 @@ Contact me: i@0x142857.com
 			</div>
 		</section>
 		</div>
+</div><!--.wrap-->
+    <div class="settings">
+    <img class="imgbg" src="http://p3.music.126.net/UhC_hu5XoxuO8nLD8XLlOA==/2366149122979361.jpg">
+    <div class="settings-top"></div>
+      <div class="settings-body"></div>
+    </div>
+
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+    	 <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/ghostdown.js"></script>
+	
+	<script type="text/javascript" src="js/jquery.ghostdown.js"></script>
+
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/popModal.min.js"></script>
     <script>
 		$(document).ready(function () {
-
     		$(".editor").ghostDown();
-    		
-
 		});
 	</script>
+
   </body>
 </html>

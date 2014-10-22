@@ -1,6 +1,29 @@
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+
+
+@font-face {
+  font-family: "Menlo";
+   font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/MenloPlus-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Menlo";
+   font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/MenloPlus-Bold.ttf) format("truetype");
+}
+
+html{
+	background: transparent;
+}
 body{
 	margin: 0;
+	background: transparent;
+	font-family: 'Menlo',Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
+	/*border-radius: 0 0 4px 4px;
+	overflow: hidden;
+	*/
 }
 h1{
 	margin-top: 10px;
@@ -9,7 +32,10 @@ ul{
 	margin: 0;
 	padding-left: 0;
 }
-.override{
+.wrap{
+	position: relative;
+}
+.override,.override2{
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -19,6 +45,9 @@ ul{
 	opacity: .4;
 	background-color: #fff;
 }
+.override2{
+	left: 260px;
+}
 .logo{
 	font-size: 22px;
 	font-weight: bold;
@@ -27,12 +56,16 @@ ul{
 }
 .control{
 	-webkit-app-region: no-drag;
-	margin-left: 80px;
+	margin-left: 60px;
 	display: none;
 	text-align: left;
 }
 .header:hover .control{
 	display: block;
+}
+.control ul{
+	margin: 0;
+	padding-left: 0;
 }
 .control ul li{
 	display: inline-block;
@@ -67,6 +100,11 @@ ul{
 	padding-left: 5px;
 	text-align: left;
 }
+.file-dropdown span{
+	width: 60px;
+	padding-left: 5px;
+	text-align: left;
+}
 .topControl{
 	margin-right: 10px;
 }
@@ -91,6 +129,7 @@ ul{
 
 .header{
 	-webkit-app-region: drag;
+	/*border-radius: 4px 4px 0 0;*/
 	overflow: hidden;
 	text-align: center;
 	position: fixed;
@@ -101,7 +140,9 @@ ul{
 	line-height: 35px;
 	color: black;
 	background: linear-gradient(rgba(232, 234, 233, 1), rgba(213, 213, 213, 1));
-	border-bottom: 1px solid #b3b2b4;
+	background-size: cover;
+	border-bottom: 1px solid #333;
+	position: relative;
 }
 .header a{
 	text-decoration: none;
@@ -120,7 +161,7 @@ ul{
 .cps{
 	-webkit-app-region: no-drag;
 	position: absolute;
-	left: 0;
+	left: 45px;
 	height: 35px;
 	width: 300px;
 }
@@ -149,7 +190,7 @@ ul{
 	color: #333;
 }
 .features{
-	padding-top: 35px;
+	padding-top: 0px;
 }
 button {
   -webkit-app-region: no-drag;
@@ -160,7 +201,7 @@ a.osx-window-btn {
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        margin: 10px 0 0 5px;
+        margin: 12px 0 0 5px;
         background: #bbb;
     }
     
@@ -238,28 +279,61 @@ hr{
 	width: 80%;
 	margin: 0 auto;
 }
-blockquote {
-	display: block;
-	background: #fff;
-	padding: 15px 20px 15px 45px;
-	margin: 0 0 20px;
-	position: relative;
-	font-family: Georgia, serif;
-	font-size: 16px;
-	line-height: 1.2;
-	color: #666;
-	text-align: justify;
+
+.sketch{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
 }
-blockquote::before {
-	content: "\201C";
-	font-family: Georgia, serif;
-	font-size: 60px;
-	font-weight: bold;
-	color: #999;
+.settings{
+	position: fixed;
+	top: 0;
+	left: -260px;
+	width: 260px;
+	height: 100%;
+	background-color: #fff;
+	z-index: 9999;
+	background-position: center;
+	transition: all .15s ease-in-out;
+	opacity: 1;
+}
+.settings-body{
+	position: absolute;
+	top: 35px;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-position: -1016px 0;
+	background-repeat: repeat-y;
+	background-image: url(http://s2.music.126.net/style/web2/img/playlist_bg.png?ed5cf7aaf67380ad1d6cd7ba7f69e51f);
+}
+.settings-top{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 35px;
+	width: 100%;
+	background-color: #333;
+}
+.imgbg{
 	position: absolute;
 	left: 0;
-	top: 5px;
+	top: -1px;
+	z-index: 1;
+	width: 500px;
+	height: 100%;
+	opacity: .2;
 }
-blockquote::after {
-	content: "";
+#settings-trigger{
+	position: absolute;
+	left: 3px;
+	top: 0px;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 26px;
+	cursor: pointer;
+	color: #6e6e6e;
+	-webkit-app-region: no-drag;
 }
