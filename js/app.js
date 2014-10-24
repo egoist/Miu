@@ -8,8 +8,12 @@ var gui = require('nw.gui'); //or global.window.nwDispatcher.requireNwGui() (see
 var fs = require('fs');
 var path = require('path');
 
-
 var toMarkdown = require('to-markdown').toMarkdown;
+
+
+
+
+
 // Get the current window
 var win = gui.Window.get();
 
@@ -68,8 +72,7 @@ function checkUpdate(){
     success: function(msg){   
     var latest = msg.version;
     if(latest > version){
-    	var notice = '检测到新版本 '+latest+' ';
-    	notice += '<a href="#" onclick="download(\''+msg.source+'\')">前往下载</a>'
+    	var notice = '检测到新版本 '+latest+ ' <a href="#;" id="download-src" onclick="home()" data-download="'+msg.source+'">前往下载</a>';
     	$('.checkUpdate').html(notice);
     }else{
     	var notice = '已经是最新版';
@@ -78,16 +81,26 @@ function checkUpdate(){
     }
   });
 }
-function download(url){
-	return gui.Shell.openExternal(url);
-}
+
+
 function home(){
 	return gui.Shell.openExternal('https://miu.0x142857.com');
 }
+var settings = new Object();
+settings.preview = simpleStorage.get('preview')?simpleStorage.get('preview'):'Github2.css';
+settings.mode = simpleStorage.get('mode');
+if(settings.mode == 'colorful'){
+	$('.header').addClass('colorful-header');
+	$('#colorful-check').attr('checked','checked');
+}
+var css_link = $("<link>", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: "themes/preview/"+settings.preview
+    });
+    css_link.appendTo('head');
 $(function() {
-	
-		
-		
+
 	
 	$('#settings-trigger').on('click',function(){
 		if(isMenu === false){
@@ -97,9 +110,12 @@ $(function() {
 			})
 			$('.settings').css('left','0')
 			$('.settings').css('box-shadow','0px 2px 10px #333')
+			setTimeout(function(){
 				$('#settings-trigger').animate({
 				left:"-11px"
 				})
+			},600)
+				
 			
 		}else if(isMenu === true){
 			isMenu = false;
@@ -109,9 +125,11 @@ $(function() {
 			},'normal')
 			
 			$('.settings').css('box-shadow','none')
-				$('#settings-trigger').animate({
+				setTimeout(function(){
+					$('#settings-trigger').animate({
 				left:"3px"
 				})
+				},600)
 			
 		}
 		
@@ -260,9 +278,51 @@ $(function() {
 				
 			}
 			
-			
-
 			)
+
+		$('#css-input').on('change',function(){
+			var new_css = path.basename($('#css-input').val());
+			simpleStorage.set('preview',new_css);
+			$('.notie').html('你的自定义 CSS <'+new_css+'> 将在下次启动时生效').slideDown();
+			setTimeout(function(){
+				$('.notie').slideUp();
+			},3000)
+		})
+		//check
+		$('#colorful-label').click(function(){
+			if($('#colorful-check').is(":checked") === true){
+				$('.header').addClass('colorful-header');
+				simpleStorage.set('mode','colorful');
+
+			}else if($('#colorful-check').is(":checked") === false){
+				$('.header').removeClass('colorful-header');
+				simpleStorage.set('mode','light');
+			}
+		})
+		$('#css-label').click(function(){
+			if($(this).data('open') == false){
+				
+				$(this).data('open',true);
+				$(this).find('i').css('-webkit-transform','rotate(90deg)');
+				$('.css-label-cont').slideDown()
+			}else if($(this).data('open') == true){
+				
+				$(this).data('open',false);
+				$(this).find('i').css('-webkit-transform','rotate(0deg)');
+				$('.css-label-cont').slideUp()
+			}
+		})
+		$('#css-input-trigger').click(function(){
+			$('#css-input').click()
+		})
+		$('#cloud-trigger').click(function(){
+			$('.notie').html('告诉我们你需要什么样的云服务？');
+			$('.notie').slideDown();
+			setTimeout(function(){
+				$('.notie').slideUp();
+			},4000)
+			
+		})
 });
 
 function saveAction () {
