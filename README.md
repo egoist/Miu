@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/0x142857/Miu/master/miu.png)
 
-Download the auto-setup program for Windows: [Setup.exe](http://down2pc.qiniudn.com/miu/Miu-v0.1.0-alpha-setup.exe)
+Download the auto-setup program for Windows: [Setup.exe](http://down2pc.qiniudn.com/miu/Miu-Ange-0.1.1-Setup.exe)
 
 Get more details about how to develop this app:
 
