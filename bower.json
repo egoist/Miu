@@ -1,0 +1,27 @@
+{
+  "name": "Miu",
+  "version": "0.1.2",
+  "authors": [
+    "0x142857 <i@0x142857.com>"
+  ],
+  "description": "Markdown Editor for Windows",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "markdown"
+  ],
+  "license": "MIT",
+  "homepage": "https://miu.0x142857.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "simpleStorage": "~0.1.2"
+  }
+}

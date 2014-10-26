@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
   <meta charset="utf-8">
     <title>Miu</title>
     
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/ghostdown.css">
-	<link rel="stylesheet" type="text/css" href="fonts/icon/style.css">
-	<link rel="stylesheet" type="text/css" href="css/popModal.css">
-	<link rel="stylesheet" type="text/css" href="themes/preview/Github2.css">
-	<link rel="stylesheet" type="text/css" href="https://fonts.lug.ustc.edu.cn/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400">
+	<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+  <link rel="stylesheet" type="text/css" href="resource/css/ghostdown.css">
+	<link rel="stylesheet" type="text/css" href="resource/fonts/icon/style.css">
+	<link rel="stylesheet" type="text/css" href="resource/css/popModal.css">
+	
+	
 
   </head>
   <body>
@@ -20,7 +20,7 @@
   <img src="miu.png">
   </div>
   	<a href="#" onclick="home()" class="logo">Miu</a>
-  	<p>Version. Alpha <span id="version">0.1.1</span> (build20141020)</p>
+  	<p>Version. Ange <span id="version">0.1.1</span> (build20141020)</p>
   	<p>&copy; 2014 By 0x142857</p>
   	<p style="color:#999;font-size:13px">Do have faith in Mikasa Arkerman</p>
   	<p style="color:#999;font-size:13px" class="checkUpdate">正在检查更新</p>
@@ -38,13 +38,9 @@
                 		<b>文件</b>
                 		
                 		</a>
-                		<ul class="dropdown file-dropdown topDropdown">
-                			<li><span id="new-trigger">新建</span></li>
-                			<li><span id="open-trigger">打开</span></li>
-                			<li><span id="save-trigger">保存</span></li>
-                			<li><span id="savenew-trigger">另存为</span></li>
-                		</ul>
+                		
                 		</li>
+                    <!--
                 		<li id="tool-action" class="topAction"><a href="#" id="tool-action-href" class="topActionHref">
                 		<b>工具</b>
                 		
@@ -55,7 +51,7 @@
                 			<li><span id="doc-trigger">转换为 DOC</span></li>
                 		</ul>
                 		</li>
-                		
+                		-->
                 		<input type="file" id="open_file" accept=".md,.markdown">
                 		<input style="display:none" type="file" id="save_file" accept=".md,.markdown" nwsaveas>
                 		<input style="display:none" type="file" id="save_html" accept=".html" nwsaveas>
@@ -75,6 +71,12 @@
   	</div>
  <h1 class="current-file" data-save="false">Miu</h1>
   </header>
+  <ul class="dropdown">
+                      <li><span id="new-trigger">新建</span></li>
+                      <li><span id="open-trigger">打开</span></li>
+                      <li><span id="save-trigger">保存</span></li>
+                      <li><span id="savenew-trigger">另存为</span></li>
+                    </ul>
     <div class="features">
   <section class="editor">
 			<div class="outer">
@@ -82,7 +84,7 @@
 
 					<section class="entry-markdown">
 						<section class="entry-markdown-content">
-<textarea id="original-file"></textarea>
+<textarea id="original-file">**123**</textarea>
 						</section>
 					</section>
 					<section class="entry-preview active">
@@ -96,25 +98,46 @@
 		</section>
 		</div>
 </div><!--.wrap-->
-    <div class="settings">
-    <img class="imgbg" src="http://p3.music.126.net/UhC_hu5XoxuO8nLD8XLlOA==/2366149122979361.jpg">
-    <div class="settings-top"></div>
-      <div class="settings-body"></div>
+    <div class="settings" ng-app="settings" ng-controller="settingsCtrl">
+    <div class="settings-top">
+      <ul class="settings-tabs">
+      <div class="settings-sep"></div>
+        <li class="settings-tab"><a href="#" class="tabbed"><span class="icon-setting"></span> 设置</a></li>
+
+        <li class="settings-tab"><a href="#" id="cloud-trigger"><span class="icon-cloud"></span> 云服务</a></li>
+      </ul>
+    </div>
+      <div class="settings-body">
+      <div class="notie gone"></div>
+        <label class="ios7-switch line-sample" id="colorful-label">
+        开启多彩的世界
+        <input type="checkbox" id="colorful-check">
+        <span></span>
+       </label>
+        <label class="ios7-switch line-sample" id="css-label" data-open="false">
+        自定义 CSS
+
+        <i class="icon-chevron-right fr"></i>
+        
+       </label>
+      <div class="css-label-cont gone">
+        <div id="css-input-trigger" class="sub-setting left2right">预览界面样式  <b></b>
+       <div>请选择 <code>%程序目录%/theme/preview/</code><br> 下的 CSS 文件</div>
+        </div>
+          
+        </div>
+      </div>
     </div>
 
-		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    	 <script src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/ghostdown.js"></script>
+		<script type="text/javascript" src="resource/js/jquery-2.0.3.min.js"></script>
+    	 <script src="resource/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="resource/js/ghostdown.js"></script>
 	
-	<script type="text/javascript" src="js/jquery.ghostdown.js"></script>
+	<script type="text/javascript" src="resource/js/jquery.ghostdown.js"></script>
+  <script type="text/javascript" src="bower_components/simpleStorage/simpleStorage.js"></script>
+	<script type="text/javascript" src="resource/js/app.js"></script>
+	<script type="text/javascript" src="resource/js/popModal.min.js"></script>
 
-	<script type="text/javascript" src="js/app.js"></script>
-	<script type="text/javascript" src="js/popModal.min.js"></script>
-    <script>
-		$(document).ready(function () {
-    		$(".editor").ghostDown();
-		});
-	</script>
-
+<input type="file" class="gone" id="css-input" accept=".css">
   </body>
 </html>
