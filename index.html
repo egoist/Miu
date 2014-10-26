@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html >
+  <head>
+  <meta charset="utf-8">
+    <title>Miu</title>
+    
+	<link rel="stylesheet" type="text/css" href="resource/css/main.css">
+  <link rel="stylesheet" type="text/css" href="resource/css/ghostdown.css">
+	<link rel="stylesheet" type="text/css" href="resource/fonts/icon/style.css">
+	<link rel="stylesheet" type="text/css" href="resource/css/popModal.css">
+	
+	
+
+  </head>
+  <body>
+  <div class="sketch"></div>
+  <div class="override" style="display:none"></div>
+  <div id="about" style="display:none">
+  <div>
+  <img src="miu.png">
+  </div>
+  	<a href="#" onclick="home()" class="logo">Miu</a>
+  	<p>Version. Ange <span id="version">0.1.1</span> (build20141020)</p>
+  	<p>&copy; 2014 By 0x142857</p>
+  	<p style="color:#999;font-size:13px">Do have faith in Mikasa Arkerman</p>
+  	<p style="color:#999;font-size:13px" class="checkUpdate">正在检查更新</p>
+  </div>
+  <div class="wrap">
+  <header class="header">
+ <span class="icon-menu" id="settings-trigger"></span>
+  <div class="fl cps">
+				<a href="javascript:;" onclick="closeWindow()" class="osx-window-btn red"></a>
+                <a href="javascript:;" onclick="miniWindow()" class="osx-window-btn yellow"></a>
+                <a href="javascript:;" onclick="maxWindow()" class="osx-window-btn green"></a>
+                <div class="control">
+                	<ul style="margin-left:20px" class="topControl">
+                		<li id="file-action" class="topAction"><a href="#" id="file-action-href" class="topActionHref">
+                		<b>文件</b>
+                		
+                		</a>
+                		
+                		</li>
+                    <!--
+                		<li id="tool-action" class="topAction"><a href="#" id="tool-action-href" class="topActionHref">
+                		<b>工具</b>
+                		
+                		</a>
+                		<ul class="tool-dropdown topDropdown">
+                			<li><span id="html-trigger">转换为 HTML</span></li>
+                			<li><span id="pdf-trigger">转换为 PDF</span></li>
+                			<li><span id="doc-trigger">转换为 DOC</span></li>
+                		</ul>
+                		</li>
+                		-->
+                		<input type="file" id="open_file" accept=".md,.markdown">
+                		<input style="display:none" type="file" id="save_file" accept=".md,.markdown" nwsaveas>
+                		<input style="display:none" type="file" id="save_html" accept=".html" nwsaveas>
+                		<input style="display:none" type="file" id="save_pdf" nwsaveas accept=".pdf">
+                		<input style="display:none" type="file" id="save_doc" accept=".doc" nwsaveas>
+                		<input style="display:none" type="file" id="savenew_file" accept=".md" nwsaveas>
+                		<li>
+                			<a href="javascript:;" id="about-trigger">关于</a>
+                		</li>
+                	</ul>
+                </div>
+  		</div>
+  		<!--<a href="javascript:;" onclick="fullScreen()" class="full">无扰</a>-->
+  	<div class="fr opts">
+  		<span class="entry-word-count fl">0 Words</span>
+  		<a href="javascript:;" onclick="fullScreen()"><span class="icon-fullscreen expand"></span></a>
+  	</div>
+ <h1 class="current-file" data-save="false">Miu</h1>
+  </header>
+  <ul class="dropdown">
+                      <li><span id="new-trigger">新建</span></li>
+                      <li><span id="open-trigger">打开</span></li>
+                      <li><span id="save-trigger">保存</span></li>
+                      <li><span id="savenew-trigger">另存为</span></li>
+                    </ul>
+    <div class="features">
+  <section class="editor">
+			<div class="outer">
+				<div class="editorwrap">
+
+					<section class="entry-markdown">
+						<section class="entry-markdown-content">
+<textarea id="original-file">**123**</textarea>
+						</section>
+					</section>
+					<section class="entry-preview active">
+						
+						<section class="entry-preview-content">
+							<div class="rendered-markdown"></div>
+						</section>
+					</section>
+				</div>
+			</div>
+		</section>
+		</div>
+</div><!--.wrap-->
+    <div class="settings" ng-app="settings" ng-controller="settingsCtrl">
+    <div class="settings-top">
+      <ul class="settings-tabs">
+      <div class="settings-sep"></div>
+        <li class="settings-tab"><a href="#" class="tabbed"><span class="icon-setting"></span> 设置</a></li>
+
+        <li class="settings-tab"><a href="#" id="cloud-trigger"><span class="icon-cloud"></span> 云服务</a></li>
+      </ul>
+    </div>
+      <div class="settings-body">
+      <div class="notie gone"></div>
+        <label class="ios7-switch line-sample" id="colorful-label">
+        开启多彩的世界
+        <input type="checkbox" id="colorful-check">
+        <span></span>
+       </label>
+        <label class="ios7-switch line-sample" id="css-label" data-open="false">
+        自定义 CSS
+
+        <i class="icon-chevron-right fr"></i>
+        
+       </label>
+      <div class="css-label-cont gone">
+        <div id="css-input-trigger" class="sub-setting left2right">预览界面样式  <b></b>
+       <div>请选择 <code>%程序目录%/theme/preview/</code><br> 下的 CSS 文件</div>
+        </div>
+          
+        </div>
+      </div>
+    </div>
+
+		<script type="text/javascript" src="resource/js/jquery-2.0.3.min.js"></script>
+    	 <script src="resource/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="resource/js/ghostdown.js"></script>
+	
+	<script type="text/javascript" src="resource/js/jquery.ghostdown.js"></script>
+  <script type="text/javascript" src="bower_components/simpleStorage/simpleStorage.js"></script>
+	<script type="text/javascript" src="resource/js/app.js"></script>
+	<script type="text/javascript" src="resource/js/popModal.min.js"></script>
+
+<input type="file" class="gone" id="css-input" accept=".css">
+  </body>
+</html>
