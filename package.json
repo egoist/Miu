@@ -1,43 +1,45 @@
 {
-    "webexe_settings": {
-        "linux-x32": true, 
-        "download_dir": "C:\\Users\\fotitud\\Downloads\\Web2ExeWin-v0.1.8b\\Web2ExeWin\\files\\downloads", 
-        "windows": true, 
-        "mac": false, 
-        "nw_version": "0.10.5", 
-        "force_download": false, 
-        "linux-x64": true
-    }, 
-    "description": "", 
-    "name": "Miu", 
-    "nodejs": true, 
-    "single-instance": false, 
-    "keywords": [], 
-    "window": {
-        "fullscreen": false, 
-        "resizable": true, 
-        "title": "Miu", 
-        "always-on-top": false, 
-        "frame": false, 
-        "height": 672, 
-        "visible": true, 
-        "as_desktop": true, 
-        "toolbar": false, 
-        "position": "center", 
-        "show_in_taskbar": true, 
-        "width": 1224, 
-        "transparent": true, 
-        "icon": "miu.png"
-    }, 
-    "version": "0.1.1", 
-    "dependencies": {
-        "nedb": "^0.11.1"
-    }, 
-    "webkit": {
-        "page-cache": false, 
-        "java": false, 
-        "plugin": false
-    }, 
-    "main": "index.html", 
-    "node-main": ""
+  "webexe_settings": {
+    "linux-x32": true,
+    "download_dir": "C:\\Users\\fotitud\\Downloads\\Web2ExeWin-v0.1.8b\\Web2ExeWin\\files\\downloads",
+    "windows": true,
+    "mac": false,
+    "nw_version": "0.10.5",
+    "force_download": false,
+    "linux-x64": true
+  },
+  "description": "",
+  "name": "Miu",
+  "nodejs": true,
+  "single-instance": true,
+  "keywords": [],
+  "window": {
+    "fullscreen": false,
+    "resizable": true,
+    "title": "Miu",
+    "always-on-top": false,
+    "frame": false,
+    "height": 672,
+    "visible": true,
+    "as_desktop": true,
+    "toolbar": false,
+    "position": "center",
+    "show_in_taskbar": true,
+    "width": 1224,
+    "transparent": true,
+    "icon": "miu.png"
+  },
+  "version": "0.1.1",
+  "dependencies": {
+    "highlight.js": "^8.3.0",
+    "marked": "^0.3.2",
+    "to-markdown": "0.0.2"
+  },
+  "webkit": {
+    "page-cache": false,
+    "java": false,
+    "plugin": false
+  },
+  "main": "app://miu/index.html",
+  "node-main": ""
 }

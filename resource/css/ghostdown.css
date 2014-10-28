@@ -120,6 +120,9 @@ filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)
 .cm-positive {
 	color: #292
 }
+.features .editor .cm-del{
+	color: #999;
+}
 .cm-header, .cm-strong {
 	font-weight: bold;
 	color: #dc322f;

@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "simpleStorage": "~0.1.2"
+    "simpleStorage": "~0.1.2",
+    "sweetalert": "https://github.com/t4t5/sweetalert.git#~0.3.1"
   }
 }

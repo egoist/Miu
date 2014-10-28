@@ -13,6 +13,8 @@ https://github.com/rogerwang/node-webkit/
 ###Requried Node Modules
 
 - to-markdown
+- highlight.js
+- marked
 
 ---
 

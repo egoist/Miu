@@ -7,24 +7,14 @@
 	<link rel="stylesheet" type="text/css" href="resource/css/main.css">
   <link rel="stylesheet" type="text/css" href="resource/css/ghostdown.css">
 	<link rel="stylesheet" type="text/css" href="resource/fonts/icon/style.css">
-	<link rel="stylesheet" type="text/css" href="resource/css/popModal.css">
-	
-	
+	<link rel="stylesheet" type="text/css" href="bower_components/sweetalert/lib/sweet-alert.css">
+<link rel="stylesheet" type="text/css" href="node_modules/highlight.js/styles/github.css">	
 
   </head>
   <body>
   <div class="sketch"></div>
   <div class="override" style="display:none"></div>
-  <div id="about" style="display:none">
-  <div>
-  <img src="miu.png">
-  </div>
-  	<a href="#" onclick="home()" class="logo">Miu</a>
-  	<p>Version. Ange <span id="version">0.1.1</span> (build20141020)</p>
-  	<p>&copy; 2014 By 0x142857</p>
-  	<p style="color:#999;font-size:13px">Do have faith in Mikasa Arkerman</p>
-  	<p style="color:#999;font-size:13px" class="checkUpdate">正在检查更新</p>
-  </div>
+  
   <div class="wrap">
   <header class="header">
  <span class="icon-menu" id="settings-trigger"></span>
@@ -69,13 +59,14 @@
   		<span class="entry-word-count fl">0 Words</span>
   		<a href="javascript:;" onclick="fullScreen()"><span class="icon-fullscreen expand"></span></a>
   	</div>
- <h1 class="current-file" data-save="false">Miu</h1>
+ <h1 class="current-file" data-save="false" data-sync-open="false">Miu</h1>
   </header>
   <ul class="dropdown">
                       <li><span id="new-trigger">新建</span></li>
                       <li><span id="open-trigger">打开</span></li>
                       <li><span id="save-trigger">保存</span></li>
                       <li><span id="savenew-trigger">另存为</span></li>
+                      <li><span id="github-trigger">Github Gist</span></li>
                     </ul>
     <div class="features">
   <section class="editor">
@@ -126,6 +117,16 @@
         </div>
           
         </div>
+        <label class="ios7-switch line-sample" id="css-label" data-open="false">
+        
+        <a href="#" id="auth_url"><div>登录 Github</div></a>
+        
+       </label>
+       <div class="github-label-cont gone">
+       <div class="sub-setting">
+         <input type="text" id="github-token" placeholder="access_token"> <button id="update-github">保存</button>
+        </div>
+       </div>
       </div>
     </div>
 
@@ -136,8 +137,7 @@
 	<script type="text/javascript" src="resource/js/jquery.ghostdown.js"></script>
   <script type="text/javascript" src="bower_components/simpleStorage/simpleStorage.js"></script>
 	<script type="text/javascript" src="resource/js/app.js"></script>
-	<script type="text/javascript" src="resource/js/popModal.min.js"></script>
-
+<script type="text/javascript" src="bower_components/sweetalert/lib/sweet-alert.js"></script>
 <input type="file" class="gone" id="css-input" accept=".css">
   </body>
 </html>

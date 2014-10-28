@@ -7,12 +7,70 @@
 var gui = require('nw.gui'); //or global.window.nwDispatcher.requireNwGui() (see https://github.com/rogerwang/node-webkit/issues/707)
 var fs = require('fs');
 var path = require('path');
-
 var toMarkdown = require('to-markdown').toMarkdown;
 
 
+// Create a shortcut with |option|.
+var option = {
+  key : "Ctrl+M",
+  active : function() {
+    console.log("Global desktop keyboard shortcut: " + this.key + " active."); 
+  },
+  failed : function(msg) {
+    // :(, fail to register the |key| or couldn't parse the |key|.
+    console.log(msg);
+  }
+};
+var shortcut = new gui.Shortcut(option);
 
 
+var tray;
+	self.show = true;
+	// Create a tray icon
+	tray = new gui.Tray({ title: 'Miu', icon: 'miu.png' });	
+	
+	 var menu = new gui.Menu();
+  var startItem = new gui.MenuItem({
+    type: 'normal',
+    label: 'Miu',
+    click: function() {
+      showWin();
+      self.show = true;
+    }
+  });
+  var hideItem = new gui.MenuItem({
+    type: 'normal',
+    label: 'Hide',
+    click: function() {
+      this.label = !self.show ? 'Hide' : 'Show';
+      if (self.show) {self.show = false; return win.hide();}
+      self.show = true;
+      return win.show();
+    }
+  });
+  var quitItem = new gui.MenuItem({
+    type: 'normal',
+    label: 'Quit',
+    click: function() {
+    	gui.App.unregisterGlobalHotKey(shortcut);
+      return win.close();
+    }
+  });
+  menu.append(startItem);
+  menu.append(hideItem);
+  menu.append(quitItem); 
+  tray.menu = menu;
+  window.tray = tray;
+function showWin() {
+	if (!self.show) win.show();
+    self.show = true;
+    return win.focus();
+}
+function destryoTray() {
+	tray.remove();
+	tray = null;
+}
+  
 
 // Get the current window
 var win = gui.Window.get();
@@ -20,7 +78,8 @@ var win = gui.Window.get();
 var isMax = false;
 var isMenu = false;
 function closeWindow () {
-	win.close();
+	win.hide()
+	self.show = false
 }
 
 function miniWindow () {
@@ -69,24 +128,84 @@ function new_file() {
 }
 
 function checkUpdate(){                             
-	var version = $('#version').html();
+	var version = '0.1.3';
   $.ajax({                                      
     type: "GET",                                        
     url: "https://raw.githubusercontent.com/0x142857/Miu/master/latest_version.json",     
     dataType: 'json',  
     success: function(msg){   
     var latest = msg.version;
-    if(latest > version){
-    	var notice = '检测到新版本 '+latest+ ' <a href="#;" id="download-src" onclick="home()" data-download="'+msg.source+'">前往下载</a>';
-    	$('.checkUpdate').html(notice);
-    }else{
-    	var notice = '已经是最新版';
-    	$('.checkUpdate').html(notice);
-    }          
+    if(latest != version){
+    	return latest;
+    }       
     }
   });
 }
+function github (){
+	var $gist_name = $('.current-file').html()?$('.current-file').html():'Miu.txt';
+	if($gist_name == 'Miu') $gist_name += '.md';
+	var $gist_content = $('.rendered-markdown').html();
+	
+	if($gist_content == ''){
+		swal({   title: "Error!", type: 'error',  text: "提交内容为空的文档会浪费 Github 的资源",   timer: 2000 });
+		return false;
+	}else{
+		var oldTitle = $('.current-file').html();
+		$('.current-file').html('<div class="wobblebar">Loading...div>');
 
+	}
+
+	$gist_content = toMarkdown($gist_content);
+	//var files = '"files":{"'+gist_name+'":{"content":'+'"'+gist_content+'"}}';
+	var gist = {}
+	gist[$gist_name] = {
+		content: $gist_content
+	}
+	var dataObject = {
+		'description': 'Created by Miu https://miu.0x142857.com',
+		'public': true,
+		'files': gist
+	}
+	var token = simpleStorage.get('github_token');
+	var header = token?{'Authorization': 'token '+token }:'';
+	
+		$.ajax({
+		type: "POST",
+		headers:  header,
+		url: "https://api.github.com/gists",
+		dataType: 'json',
+		data: JSON.stringify(dataObject),
+		success:function(msg){
+			$('.current-file').html(oldTitle)
+			var username = token?msg.owner.login:"Miu 用户";
+			swal({
+			    title: "好开心!",
+			    text: "Hi, "+username+" 你的 Gist 已经发布到 Github <code>ID: "+msg.id+"</code>",
+			    type: "success",
+			    showCancelButton: true,
+			    confirmButtonColor: "#DD6B55",
+			    confirmButtonText: "访问",
+			    cancelButtonText: "返回",
+			    closeOnConfirm: false,
+			    closeOnCancel: true
+			},
+
+			
+
+			function(isConfirm) {
+			    if (isConfirm) {
+			    	if(token){
+			    		gui.Shell.openExternal('https://gist.github.com/'+username+'/'+msg.id);
+			    	}else{
+			    		gui.Shell.openExternal('https://gist.github.com/anonymous/'+msg.id);
+			    	}
+			       
+			    } 
+			});
+		}
+	})
+
+}
 
 function home(){
 	return gui.Shell.openExternal('https://miu.0x142857.com');
@@ -105,6 +224,38 @@ var css_link = $("<link>", {
     });
     css_link.appendTo('head');
 $(function() {
+	 tray.on('click', function() {
+    showWin()
+  });
+
+	
+	gui.App.registerGlobalHotKey(shortcut);
+
+	
+
+
+
+
+
+// If register |shortcut| successfully and user struck "Ctrl+Shift+A", |shortcut|
+// will get an "active" event.
+
+// You can also add listener to shortcut's active and failed event.
+shortcut.on('active', function() {
+	if(!self.show){
+		self.show = true;
+		win.show();
+		return win.focus();
+	}
+	self.show = false;
+	return win.hide();
+  });
+
+shortcut.on('failed', function(msg) {
+  console.log(msg);
+});
+
+	
 	$(".editor").ghostDown();
 	$('#original-file').html('');
 	$(".editor").ghostDown('destroy');
@@ -141,27 +292,68 @@ $(function() {
 		}
 		
 	})
-
-	$('#about-trigger').click(function(){
-		checkUpdate();
-		$('.override').show();
-		$('#about').notifyModal({
-			duration : -1,
-			placement : 'center',
-			overlay : true,
-			type : 'simple',
-			onClose : function() {}
-
-			});
+	$('#github-trigger').click(function(){
+		swal({
+				    title: "发送你的爱意到",
+				    text: "<a href='#' id='github'><span class='icon-github'></span></a>",
+				    imageUrl: "resource/img/plane.png",
+				    allowOutsideClick: true,
+				    confirmButtonColor: "#DD6B55",
+				    confirmButtonText: "发送",
+				    cancelButtonText: "返回",
+				    closeOnConfirm: false,
+				    closeOnCancel: false
+				},
+				function(isConfirm) {
+					    if (isConfirm) {
+					        github();
+					    } 
+					}
+				);
 	})
 
-		
+	$('#about-trigger').click(function(){
+		var new_release = checkUpdate();
+		var confirmButton = new_release?"下载新版本":"已经是最新版本";
+		swal({
+		    title: "Miu Ange",
+		    text: "<p>Version 0.1.3</p>Markdown Editor for Windows",
+		    imageUrl: "https://miu.0x142857.com/img/miu.png",
+		    showCancelButton: true,
+		    allowOutsideClick: true,
+		    confirmButtonColor: "#DD6B55",
+		    confirmButtonText: confirmButton,
+		    cancelButtonText: "关闭",
+		    closeOnConfirm: false,
+		    closeOnCancel: true
+		},
+		function(isConfirm) {
+		    if (isConfirm) {
+		        home()
+		    } 
+		});
+	})
+
+			$('.current-file').click(function(){
+				
+				$(this).attr('contentEditable',true).css('cursor','text').focus();
+
+			})
+			$('.current-file').on('blur',function(){
+				$(this).attr('contentEditable',false).css('cursor','pointer')
+				//$('#savenew_file').val($(this).html())
+				$('#savenew_file').attr('nwsaveas',$(this).html()).attr('accept','')
+				if($(this).data('save') == true){ //已存在的文件重命名
+					var new_location =  path.dirname($(this).data('location')) + '/' + $(this).html();
+					$(this).data('location',new_location);
+				}
+			})
 		$('body').keydown(function(e){
 			if((e.ctrlKey || e.metaKey) && e.which === 83 && !e.shiftKey){
 				if($('.current-file').data('save') == true){
 					saveAction();
 				}else if($('.current-file').data('save') == false){
-					$('#save_file').click();
+					$('#savenew_file').click();
 				}
 				
 			}
@@ -180,6 +372,15 @@ $(function() {
 			if((e.ctrlKey || e.metaKey) && e.which === 78 && !e.shiftKey){
 				
 					new_file()
+				
+				
+			}
+
+			if((e.ctrlKey || e.metaKey) && e.which === 71 && !e.shiftKey){
+					
+					
+						$('#github-trigger').click()
+					
 				
 				
 			}
@@ -301,13 +502,23 @@ $(function() {
 			}
 			
 			)
-
+		$('#auth_url').on('click',function(){			
+			$('.github-label-cont').slideDown()
+			var new_win = gui.Shell.openExternal('http://miu_oauth.jd-app.com/login');
+		})
 		$('#css-input').on('change',function(){
 			var new_css = path.basename($('#css-input').val());
 			simpleStorage.set('preview',new_css);
 			$('.notie').html('你的自定义 CSS <'+new_css+'> 将在下次启动时生效').slideDown();
 			setTimeout(function(){
 				$('.notie').slideUp();
+			},3000)
+		})
+		$('#update-github').click(function(){
+			simpleStorage.set('github_token',$('#github-token').val())
+			$('.notie').html('你已经以 Github 用身份登录').slideDown();
+			setTimeout(function(){
+				$('.notie').slideUp()
 			},3000)
 		})
 		//check
@@ -375,7 +586,7 @@ function saveAction () {
 				  		 
 				  	});
 				  })
-				  console.log('It\'s saved!');
+				  console.log('It\'s saved!'+path.basename(savePath));
 				  $('#save_file').val()
 				});	
 }
@@ -405,7 +616,7 @@ function savenewAction () {
 				  	});
 				  })
 				  console.log('It\'s saved!');
-				  $('#savenew_file').val('');
+				  $('#savenew_file').val('').attr('nwsaveas','');
 				});	
 }
 
@@ -421,7 +632,7 @@ function autoSave () {
 				  if (err) alert(err);
 				  var oldTitle = $('.current-file').html();
 				  $('.current-file').animate({top:'-44px'},function(){
-				  	$('.current-file').html('已自动保存');
+				  	console.log('已自动保存');
 				  	$('.current-file').animate({top:'50%'},function(){
 				  		setTimeout(function(){
 
@@ -429,7 +640,7 @@ function autoSave () {
 				 		
 				 		 setTimeout(function(){
 				 		 	var replaceTitle = path.basename(savePath);
-				  			 $('.current-file').html(replaceTitle).data('save',true);
+				  			 $('.current-file').data('save',true);
 				 		 	$('.current-file').animate({top:"50%"})
 				 		 },600)
 				 		 
