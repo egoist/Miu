@@ -6,6 +6,18 @@ Goto our forum to download latest version of **Miu Ange** : [Support Forum](http
 
 Wiki for Miu users : [English version](https://github.com/0x142857/Miu/wiki)
 
+---
+
+###Quick Start
+
+- `Git clone https://github.com/0x142857/Miu.git Miu` or just [download](https://github.com/0x142857/Miu/archive/master.zip) it.
+
+- Goto the `Miu` folder and run `npm install` then `bower install`.
+
+- Finally you should look into [How to run apps](https://github.com/rogerwang/node-webkit/wiki/How-to-run-apps) .
+
+---
+
 Get more details about how to develop this app:
 
 https://github.com/rogerwang/node-webkit/
