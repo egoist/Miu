@@ -24,7 +24,7 @@ https://github.com/rogerwang/node-webkit/
 
 I've spent hundreds of hours into developing Miu, considering it is filled with my love you may donate a cup of cola, yep I love cola.
 
-Here I accpept Alipay, Paypal and Bitcoin.
+Here I accept Alipay, Paypal and Bitcoin.
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=i%400x142857%2ecom&lc=C2&amount=10%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_donate_LG%2egif%3aNonHosted)
 
