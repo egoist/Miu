@@ -630,26 +630,9 @@ function autoSave () {
 				}
 				fs.writeFile(savePath, toSave , function (err) {
 				  if (err) alert(err);
-				  var oldTitle = $('.current-file').html();
-				  $('.current-file').animate({top:'-44px'},function(){
 				  	console.log('已自动保存');
-				  	$('.current-file').animate({top:'50%'},function(){
-				  		setTimeout(function(){
-
-				  			$('.current-file').animate({top:"-44px"})
-				 		
-				 		 setTimeout(function(){
-				 		 	var replaceTitle = path.basename(savePath);
-				  			 $('.current-file').data('save',true);
-				 		 	$('.current-file').animate({top:"50%"})
-				 		 },600)
-				 		 
-				  		},1000);
-				  		
-				  		 
-				  	});
-				  })
-
+				  
+				  	 $('.current-file').data('save',true);
 				});	
 	}
 	setTimeout(function(){autoSave()},60000);
