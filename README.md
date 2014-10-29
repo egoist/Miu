@@ -32,6 +32,8 @@ Alipay account email: i@0x142857.com
 
 Bitcoin address: [12ExMbLmtYsyyj4GTcGQrB64M4DsiAN3eN](http://blockexplorer.com/address/12ExMbLmtYsyyj4GTcGQrB64M4DsiAN3eN)
 
+---
+
 ###License
 
 Licensed under MIT license.
