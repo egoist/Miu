@@ -2,7 +2,9 @@
 
 ![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
 
-Goto our forum to download latest version of **Miu Ange** : [Support Forum](https://miu.0x142857.com/forum)
+Goto our forum to download latest version of **Miu Ange** : [Support Forum]
+
+Wiki for Miu users : [English version](https://github.com/0x142857/Miu/wiki)
 
 Get more details about how to develop this app:
 
