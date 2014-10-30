@@ -8,7 +8,7 @@ var gui = require('nw.gui'); //or global.window.nwDispatcher.requireNwGui() (see
 var fs = require('fs');
 var path = require('path');
 var toMarkdown = require('to-markdown').toMarkdown;
-
+var lang = simpleStorage.get('language') || 'en';
 
 // Create a shortcut with |option|.
 var option = {
@@ -66,7 +66,7 @@ function showWin() {
     self.show = true;
     return win.focus();
 }
-function destryoTray() {
+function destroyTray() {
 	tray.remove();
 	tray = null;
 }
@@ -78,8 +78,10 @@ var win = gui.Window.get();
 var isMax = false;
 var isMenu = false;
 function closeWindow () {
-	win.hide()
 	self.show = false
+	win.hide()
+
+	
 }
 
 function miniWindow () {
@@ -103,7 +105,12 @@ function maxWindow () {
 
 function fullScreen () {
 	win.toggleFullscreen();
+	
+	
 }
+
+
+
 
  /*function jQueryMain ()
     {
@@ -145,9 +152,11 @@ function github (){
 	var $gist_name = $('.current-file').html()?$('.current-file').html():'Miu.txt';
 	if($gist_name == 'Miu') $gist_name += '.md';
 	var $gist_content = $('.rendered-markdown').html();
-	
+	var notie = 'Share an emtpy gist is not welcome by Miu';
+	if(lang == 'cn') notie = '提交内容为空的文档会浪费 Github 的资源';
+	else if(lang == 'jp') notie = '提出空のドキュメントは、Githubのリソースの無駄になります';
 	if($gist_content == ''){
-		swal({   title: "Error!", type: 'error',  text: "提交内容为空的文档会浪费 Github 的资源",   timer: 2000 });
+		swal({   title: "Error!", type: 'error',  text: notie,   timer: 2000 });
 		return false;
 	}else{
 		var oldTitle = $('.current-file').html();
@@ -178,14 +187,17 @@ function github (){
 		success:function(msg){
 			$('.current-file').html(oldTitle)
 			var username = token?msg.owner.login:"Miu 用户";
+			var success_notie = 'Your gist is being published to Github successfully';
+			if(lang == 'cn') success_notie = '你的 Gist 已经发布到 Github';
+			else if(lang == 'jp') success_notie = 'あなたの要旨は正常にGithubのに公開されている';
 			swal({
-			    title: "好开心!",
-			    text: "Hi, "+username+" 你的 Gist 已经发布到 Github <code>ID: "+msg.id+"</code>",
+			    title: "Success!",
+			    text: "Hi, "+username+" "+ success_notie +" <code>ID: "+msg.id+"</code>",
 			    type: "success",
 			    showCancelButton: true,
 			    confirmButtonColor: "#DD6B55",
-			    confirmButtonText: "访问",
-			    cancelButtonText: "返回",
+			    confirmButtonText: (lang=='en')?"Visit":((lang=='cn')?"访问":"訪問"),
+			    cancelButtonText: (lang=='en')?"Return":((lang=='cn')?"返回":"リターン"),
 			    closeOnConfirm: false,
 			    closeOnCancel: true
 			},
@@ -225,7 +237,13 @@ var css_link = $("<link>", {
     css_link.appendTo('head');
 $(function() {
 	 tray.on('click', function() {
-    showWin()
+	 	if(!self.show){
+		self.show = true;
+		win.show();
+		return win.focus();
+		}
+		
+    
   });
 
 	
@@ -294,13 +312,13 @@ shortcut.on('failed', function(msg) {
 	})
 	$('#github-trigger').click(function(){
 		swal({
-				    title: "发送你的爱意到",
+				    title: (lang=='en')?"Share your love to":((lang=='cn')?"发送你的爱意到":"にあなたの愛を共有する"),
 				    text: "<a href='#' id='github'><span class='icon-github'></span></a>",
 				    imageUrl: "resource/img/plane.png",
 				    allowOutsideClick: true,
 				    confirmButtonColor: "#DD6B55",
-				    confirmButtonText: "发送",
-				    cancelButtonText: "返回",
+				    confirmButtonText: (lang=='en')?"Send":((lang=='cn')?"发送":"送る"),
+				    cancelButtonText: (lang=='en')?"Return":((lang=='cn')?"返回":"リターン"),
 				    closeOnConfirm: false,
 				    closeOnCancel: false
 				},
@@ -323,7 +341,7 @@ shortcut.on('failed', function(msg) {
 		    allowOutsideClick: true,
 		    confirmButtonColor: "#DD6B55",
 		    confirmButtonText: confirmButton,
-		    cancelButtonText: "关闭",
+		    cancelButtonText: (lang=='en')?"Close":((lang=='cn')?"关闭":"閉じる"),
 		    closeOnConfirm: false,
 		    closeOnCancel: true
 		},
@@ -549,7 +567,7 @@ shortcut.on('failed', function(msg) {
 			$('#css-input').click()
 		})
 		$('#cloud-trigger').click(function(){
-			$('.notie').html('告诉我们你需要什么样的云服务？');
+			$('.notie').html((lang=='en')?"What kind of Cloud service do you need?":((lang=='cn')?"告诉我们你需要什么样的云服务?":"あなたはクラウドサービスはどのような必要なのですか？"));
 			$('.notie').slideDown();
 			setTimeout(function(){
 				$('.notie').slideUp();
@@ -569,7 +587,7 @@ function saveAction () {
 				  if (err) alert(err);
 				  var oldTitle = $('.current-file').html();
 				  $('.current-file').animate({top:'-44px'},function(){
-				  	$('.current-file').html('已保存');
+				  	$('.current-file').html((lang=='en')?"Saved":((lang=='cn')?"已保存":"已保存"));
 				  	$('.current-file').animate({top:'50%'},function(){
 				  		setTimeout(function(){
 
@@ -601,7 +619,7 @@ function savenewAction () {
 				  var replaceTitle = path.basename(savePath);
 				  			
 				  $('.current-file').animate({top:'-44%'},function(){
-				  	$('.current-file').html('已另存为 '+replaceTitle);
+				  	$('.current-file').html((lang=='en')?"Saved as ":((lang=='cn')?"已另存为 ":"已另存为 ")+replaceTitle);
 				  	$('.current-file').animate({top:'50%'},function(){
 				  		setTimeout(function(){
 				  		 $('.current-file').animate({top:"-44px"})	
@@ -630,9 +648,26 @@ function autoSave () {
 				}
 				fs.writeFile(savePath, toSave , function (err) {
 				  if (err) alert(err);
+				  var oldTitle = $('.current-file').html();
+				  $('.current-file').animate({top:'-44px'},function(){
 				  	console.log('已自动保存');
-				  
-				  	 $('.current-file').data('save',true);
+				  	$('.current-file').animate({top:'50%'},function(){
+				  		setTimeout(function(){
+
+				  			$('.current-file').animate({top:"-44px"})
+				 		
+				 		 setTimeout(function(){
+				 		 	var replaceTitle = path.basename(savePath);
+				  			 $('.current-file').data('save',true);
+				 		 	$('.current-file').animate({top:"50%"})
+				 		 },600)
+				 		 
+				  		},1000);
+				  		
+				  		 
+				  	});
+				  })
+
 				});	
 	}
 	setTimeout(function(){autoSave()},60000);
