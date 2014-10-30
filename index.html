@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="node_modules/highlight.js/styles/github.css">	
 
   </head>
-  <body>
+  <body ng-app="Miu">
   <div class="sketch"></div>
   <div class="override" style="display:none"></div>
   
@@ -25,7 +25,7 @@
                 <div class="control">
                 	<ul style="margin-left:20px" class="topControl">
                 		<li id="file-action" class="topAction"><a href="#" id="file-action-href" class="topActionHref">
-                		<b>文件</b>
+                		<b>{{ 'NAV.file.title' | translate }}</b>
                 		
                 		</a>
                 		
@@ -49,7 +49,7 @@
                 		<input style="display:none" type="file" id="save_doc" accept=".doc" nwsaveas>
                 		<input style="display:none" type="file" id="savenew_file" accept=".md" nwsaveas>
                 		<li>
-                			<a href="javascript:;" id="about-trigger">关于</a>
+                			<a href="javascript:;" id="about-trigger">{{ 'NAV.about' | translate }}</a>
                 		</li>
                 	</ul>
                 </div>
@@ -62,10 +62,10 @@
  <h1 class="current-file" data-save="false" data-sync-open="false">Miu</h1>
   </header>
   <ul class="dropdown">
-                      <li><span id="new-trigger">新建</span></li>
-                      <li><span id="open-trigger">打开</span></li>
-                      <li><span id="save-trigger">保存</span></li>
-                      <li><span id="savenew-trigger">另存为</span></li>
+                      <li><span id="new-trigger">{{ 'NAV.file.option.new' | translate }}</span></li>
+                      <li><span id="open-trigger">{{ 'NAV.file.option.open' | translate }}</span></li>
+                      <li><span id="save-trigger">{{ 'NAV.file.option.save' | translate }}</span></li>
+                      <li><span id="savenew-trigger">{{ 'NAV.file.option.saveas' | translate }}</span></li>
                       <li><span id="github-trigger">Github Gist</span></li>
                     </ul>
     <div class="features">
@@ -89,54 +89,67 @@
 		</section>
 		</div>
 </div><!--.wrap-->
-    <div class="settings" ng-app="settings" ng-controller="settingsCtrl">
+    <div class="settings">
     <div class="settings-top">
       <ul class="settings-tabs">
       <div class="settings-sep"></div>
-        <li class="settings-tab"><a href="#" class="tabbed"><span class="icon-setting"></span> 设置</a></li>
+        <li class="settings-tab"><a href="#" class="tabbed"><span class="icon-setting"></span> 
+        {{ 'SIDEBAR.setting' | translate }}</a></li>
 
-        <li class="settings-tab"><a href="#" id="cloud-trigger"><span class="icon-cloud"></span> 云服务</a></li>
+        <li class="settings-tab"><a href="#" id="cloud-trigger"><span class="icon-cloud"></span> {{ 'SIDEBAR.cloud.title' | translate }}</a></li>
       </ul>
     </div>
       <div class="settings-body">
       <div class="notie gone"></div>
         <label class="ios7-switch line-sample" id="colorful-label">
-        开启多彩的世界
+        {{ 'SIDEBAR.colorful' | translate }}
         <input type="checkbox" id="colorful-check">
         <span></span>
        </label>
         <label class="ios7-switch line-sample" id="css-label" data-open="false">
-        自定义 CSS
+        {{ 'SIDEBAR.customcss' | translate }}
 
         <i class="icon-chevron-right fr"></i>
         
        </label>
       <div class="css-label-cont gone">
-        <div id="css-input-trigger" class="sub-setting left2right">预览界面样式  <b></b>
-       <div>请选择 <code>%程序目录%/theme/preview/</code><br> 下的 CSS 文件</div>
+        <div id="css-input-trigger" class="sub-setting left2right">{{ 'SIDEBAR.preview.title' | translate }}  <b></b>
+       <div>{{ 'SIDEBAR.preview.content' | translate }}</div>
         </div>
           
         </div>
-        <label class="ios7-switch line-sample" id="css-label" data-open="false">
+        <label class="ios7-switch line-sample" data-open="false">
         
-        <a href="#" id="auth_url"><div>登录 Github</div></a>
+        <a href="#" id="auth_url"><div>{{ 'SIDEBAR.github' | translate }}</div></a>
         
        </label>
        <div class="github-label-cont gone">
        <div class="sub-setting">
-         <input type="text" id="github-token" placeholder="access_token"> <button id="update-github">保存</button>
+         <input type="text" id="github-token" placeholder="access_token (Ctrl + C)"> <button id="update-github">{{ 'GLOBAL.save' | translate }}</button>
         </div>
+        
        </div>
+       <label class="ios7-switch line-sample" data-open="false" ng-controller="langCtrl" style="padding:0">
+        
+        <a href="#" class="country" ng-click="changeLanguage('cn')"><img width="25" align="absmiddle" src="resource/img/flag/China.png"> 中文</a>
+        <a href="#" class="country" ng-click="changeLanguage('en')"><img width="25" align="absmiddle" src="resource/img/flag/USA.png"> English</a>
+        <a href="#" class="country" ng-click="changeLanguage('jp')"><img width="25" align="absmiddle" src="resource/img/flag/Japan.png"> 日本语</a>
+       </label>
       </div>
     </div>
 
 		<script type="text/javascript" src="resource/js/jquery-2.0.3.min.js"></script>
     	 <script src="resource/js/jquery-ui.js"></script>
+       <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+       <script type="text/javascript" src="bower_components/angular-translate/angular-translate.min.js"></script>
+      
     <script type="text/javascript" src="resource/js/ghostdown.js"></script>
 	
 	<script type="text/javascript" src="resource/js/jquery.ghostdown.js"></script>
   <script type="text/javascript" src="bower_components/simpleStorage/simpleStorage.js"></script>
+   
 	<script type="text/javascript" src="resource/js/app.js"></script>
+  <script type="text/javascript" src="resource/js/i18n.js"></script>
 <script type="text/javascript" src="bower_components/sweetalert/lib/sweet-alert.js"></script>
 <input type="file" class="gone" id="css-input" accept=".css">
   </body>

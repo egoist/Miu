@@ -1159,3 +1159,19 @@ hr{
 #auth_url{
     color: #333;
 }
+a.country {
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    width: 33%;
+    float: left;
+    color: #333;
+    height: 40px;
+    line-height: 40px;
+    transition: all .15s ease-in-out;
+    border-bottom: 4px solid transparent;
+}
+a.country:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    line-height: 36px;
+}
