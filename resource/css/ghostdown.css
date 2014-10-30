@@ -314,7 +314,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
 }
 }
 .features .editor .editorwrap {
-	max-width: 1180px;
+	max-width: 100%;
 	padding: 0 10px;
 	margin: 0 auto;
 	position: relative;
