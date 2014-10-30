@@ -7,10 +7,7 @@ var fs = require("fs");
 
 var path = require("path");
 
-var toMarkdown = require("to-markdown").toMarkdown;
-
 var lang = simpleStorage.get("language") || "en";
-
 // Create a shortcut with |option|.
 var option = {
     key:"Ctrl+M",
@@ -159,9 +156,10 @@ function checkUpdate() {
 }
 
 function github() {
+
     var $gist_name = $(".current-file").html() ? $(".current-file").html() :"Miu.txt";
     if ($gist_name == "Miu") $gist_name += ".md";
-    var $gist_content = $(".rendered-markdown").html();
+    var $gist_content = $('.editor').ghostDown('getMarkdown');
     var notie = "Share an emtpy gist is not welcome by Miu";
     if (lang == "cn") notie = "提交内容为空的文档会浪费 Github 的资源"; else if (lang == "jp") notie = "提出空のドキュメントは、Githubのリソースの無駄になります";
     if ($gist_content == "") {
@@ -176,7 +174,6 @@ function github() {
         var oldTitle = $(".current-file").html();
         $(".current-file").html('<div class="wobblebar">Loading...div>');
     }
-    $gist_content = toMarkdown($gist_content);
     //var files = '"files":{"'+gist_name+'":{"content":'+'"'+gist_content+'"}}';
     var gist = {};
     gist[$gist_name] = {
@@ -517,8 +514,8 @@ $(function() {
 });
 
 function saveAction() {
-    var toSave = $(".rendered-markdown").html().toString();
-    toSave = toMarkdown(toSave);
+    var toSave = $('.editor').ghostDown('getMarkdown');
+
     savePath = $("#save_file").val();
     if (!savePath) {
         savePath = $(".current-file").data("location");
@@ -553,8 +550,7 @@ function saveAction() {
 }
 
 function savenewAction() {
-    var toSave = $(".rendered-markdown").html();
-    toSave = toMarkdown(toSave);
+    var toSave = $('.editor').ghostDown('getMarkdown');
     savePath = $("#savenew_file").val();
     var oldTitle = $(".current-file").html();
     fs.writeFile(savePath, toSave, function(err) {
@@ -588,41 +584,19 @@ function savenewAction() {
 
 function autoSave() {
     if ($(".current-file").data("save") == true) {
-        var toSave = $(".rendered-markdown").html();
-        toSave = toMarkdown(toSave);
+        var toSave = $('.editor').ghostDown('getMarkdown');
         savePath = $("#save_file").val();
         if (!savePath) {
             savePath = $(".current-file").data("location");
         }
         fs.writeFile(savePath, toSave, function(err) {
             if (err) alert(err);
-            var oldTitle = $(".current-file").html();
-            $(".current-file").animate({
-                top:"-44px"
-            }, function() {
-                console.log("已自动保存");
-                $(".current-file").animate({
-                    top:"50%"
-                }, function() {
-                    setTimeout(function() {
-                        $(".current-file").animate({
-                            top:"-44px"
-                        });
-                        setTimeout(function() {
-                            var replaceTitle = path.basename(savePath);
-                            $(".current-file").data("save", true);
-                            $(".current-file").animate({
-                                top:"50%"
-                            });
-                        }, 600);
-                    }, 1e3);
-                });
-            });
+          
         });
     }
     setTimeout(function() {
         autoSave();
-    }, 6e4);
+    }, 60000);
 }
 
 function openAction() {
