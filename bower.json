@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "simpleStorage": "~0.1.2",
-    "sweetalert": "https://github.com/t4t5/sweetalert.git#~0.3.1",
+    "sweetalert": "https://github.com/0x142857/sweetalert.git#~0.3.1",
     "angular": "~1.3.0",
     "angular-translate": "~2.4.2"
   }
