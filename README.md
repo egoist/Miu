@@ -38,7 +38,7 @@ I've spent hundreds of hours into developing Miu, considering it is filled with 
 
 Here I accept Alipay, Paypal and Bitcoin.
 
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=i%400x142857%2ecom&lc=C2&amount=10%2e00&currency_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_donate_LG%2egif%3aNonHosted)
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=i%400x142857%2ecom&lc=C2&amount=10%2e00¤cy_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_donate_LG%2egif%3aNonHosted)
 
 Alipay account email: i@0x142857.com
 

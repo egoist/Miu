@@ -16,7 +16,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     			'new': 'New',
     			'open': 'Open',
     			'save': 'Save',
-    			'saveas': 'Save as'
+    			'saveas': 'Save as',
+          'html': 'Export as HTML'
     		}
     	},
     	'about': 'About'
@@ -51,7 +52,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     			'new': '新建',
     			'open': '打开',
     			'save': '保存',
-    			'saveas': '另存为'
+    			'saveas': '另存为',
+          'html': '导出为 HTML'
     		}
     	},
     	'about': '关于'
@@ -85,7 +87,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     			'new': '新しい',
     			'open': '打开',
     			'save': '保存',
-    			'saveas': '名前を付けて保存'
+    			'saveas': '名前を付けて保存',
+          'html': '导出为 HTML'
     		}
     	},
     	'about': 'について'

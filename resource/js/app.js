@@ -611,3 +611,45 @@ function openAction() {
         });
     }
 }
+
+function htmlAction() {
+    var toSave = $('.rendered-markdown').html();
+    var css = '<link rel="stylesheet" type="text/css" href="http://cdn.staticfile.org/normalize/3.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="https://miu.0x142857.com/static/css/html.css">'
+    savePath = $("#save_html").val();
+    var oldTitle = $(".current-file").html();
+    var body = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>'+oldTitle+'</title>'+css+'</head><body><div class="wrap">'+toSave+'</div></body></html>'
+    
+    $(".current-file").html('<div class="wobblebar">Loading...div>');
+    fs.writeFile(savePath, body, function(err) {
+        if (err) alert(err);
+        var replaceTitle = path.basename(savePath);
+       
+            
+            
+            
+                   
+                    setTimeout(function() {
+                        $(".current-file").html(lang == "en" ? "Saved as " :(lang == "cn" ? "已另存为 " :"已另存为 ") + replaceTitle);
+                        setTimeout(function(){
+
+                             $(".current-file").animate({
+                                top:'-44px'
+                             },function(){
+                                 $(".current-file").html(oldTitle);
+                                 setTimeout(function(){
+                                    $(".current-file").animate({
+                                        top:'50%'
+                                     },1000)
+                                 })
+                             })
+                         },1000)
+                       
+                        
+                    }, 1000);
+           
+         
+       
+        console.log("It's saved as HTML!");
+        $("#save_html").val("").attr("nwsaveas", "");
+    });
+}
