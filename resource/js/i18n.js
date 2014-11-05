@@ -84,8 +84,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     	'file': {
     		'title': 'ファイル',
     		'option': {
-    			'new': '新しい',
-    			'open': '打开',
+    			'new': '新規作成',
+    			'open': '開く',
     			'save': '保存',
     			'saveas': '名前を付けて保存',
           'html': '导出为 HTML'
@@ -96,15 +96,15 @@ app.config(['$translateProvider', function ($translateProvider) {
     'SIDEBAR':{
     	'setting': '設定',
     	'cloud': {
-    		'title': '云服务',
+    		'title': 'クロウド',
     		'temp': 'あなたはクラウドサービスを必要とするものを教えてください'
     	},
-    	'colorful': 'カラフル',
-    	'customcss': 'カスタム CSS',
-    	'github': 'に接続します Github',
+    	'colorful': '虹色表示',
+    	'customcss': 'CSSカスタマイズ',
+    	'github': 'githubにアクセス',
     	'preview': {
-    		'title': 'プレビューインターフェース',
-    		'content': 'ファイルを選択してください %APP DIR%/theme/preview/'
+    		'title': 'スタイルプレビュー',
+    		'content': '%APP DIR%/theme/preview/ から CSSﾌｧｲﾙを選んでください'
     	}
     }
   });
