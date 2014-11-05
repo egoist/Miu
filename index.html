@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="resource/css/main.css">
   <link rel="stylesheet" type="text/css" href="resource/css/ghostdown.css">
 	<link rel="stylesheet" type="text/css" href="resource/fonts/icon/style.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/hint.css/hint.min.css">
 	<link rel="stylesheet" type="text/css" href="bower_components/sweetalert/lib/sweet-alert.css">
 <link rel="stylesheet" type="text/css" href="node_modules/highlight.js/styles/github.css">	
 
@@ -18,10 +19,11 @@
   <div class="wrap">
   <header class="header">
  <span class="icon-menu" id="settings-trigger"></span>
+
   <div class="fl cps">
-				<a href="javascript:;" onclick="closeWindow()" class="osx-window-btn red"></a>
-                <a href="javascript:;" onclick="miniWindow()" class="osx-window-btn yellow"></a>
-                <a href="javascript:;" onclick="maxWindow()" class="osx-window-btn green"></a>
+				<a href="javascript:;" data-hint="Hide to tray" onclick="closeWindow()" class="osx-window-btn red hint--bottom hint--rounded"></a>
+                <a href="javascript:;" data-hint="Minimize" onclick="miniWindow()" class="osx-window-btn yellow hint--bottom hint--rounded"></a>
+                <a href="javascript:;" data-hint="Maximize" onclick="maxWindow()" class="osx-window-btn green hint--bottom hint--rounded"></a>
                 <div class="control">
                 	<ul style="margin-left:20px" class="topControl">
                 		<li id="file-action" class="topAction"><a href="#" id="file-action-href" class="topActionHref">
@@ -57,7 +59,7 @@
   		<!--<a href="javascript:;" onclick="fullScreen()" class="full">无扰</a>-->
   	<div class="fr opts">
   		<span class="entry-word-count fl">0 Words</span>
-  		<a href="javascript:;" onclick="fullScreen()"><span class="icon-fullscreen expand"></span></a>
+  		<a href="javascript:;" class="hint--left hint--rounded" onclick="fullScreen()" data-hint="Fullscreen"><span class="icon-fullscreen expand"></span></a>
   	</div>
  <h1 class="current-file" data-save="false" data-sync-open="false">Miu</h1>
   </header>

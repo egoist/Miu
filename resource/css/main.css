@@ -173,7 +173,6 @@ a{
 .header {
     -webkit-app-region: drag;
     /*border-radius: 4px 4px 0 0;*/
-    overflow: hidden;
     text-align: center;
     position: fixed;
     z-index: 9999;
@@ -1174,4 +1173,7 @@ a.country {
 a.country:hover {
     background-color: rgba(0, 0, 0, 0.06);
     line-height: 36px;
+}
+.hint--rounded:after{
+    text-shadow: none;
 }
