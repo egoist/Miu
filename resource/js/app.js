@@ -1,3 +1,5 @@
+var version = "0.1.4";
+
 // Get the current window
 // Load native UI library
 var gui = require("nw.gui");
@@ -141,16 +143,17 @@ function new_file() {
 }
 
 function checkUpdate() {
-    var version = "0.1.3";
+    
     $.ajax({
         type:"GET",
-        url:"https://raw.githubusercontent.com/0x142857/Miu/master/latest_version.json",
+        url:"https://raw.githubusercontent.com/IndieInn/Miu/master/latest_version.json",
         dataType:"json",
         success:function(msg) {
-            var latest = msg.version;
-            if (latest != version) {
-                return latest;
-            }
+
+            if(msg.version != version) $('.confirm').html('检测到新版本')
+            
+
+            
         }
     });
 }
@@ -318,16 +321,16 @@ $(function() {
         });
     });
     $("#about-trigger").click(function() {
-        var new_release = checkUpdate();
-        var confirmButton = new_release ? "下载新版本" :"已经是最新版本";
+       
+        
         swal({
             title:"Miu Ange",
-            text:"<p>Version 0.1.3</p>Markdown Editor for Windows",
+            text:"<p>Version "+version+"</p>Markdown Editor for Windows",
             imageUrl:"https://miu.0x142857.com/img/miu.png",
             showCancelButton:true,
             allowOutsideClick:true,
             confirmButtonColor:"#DD6B55",
-            confirmButtonText:confirmButton,
+            confirmButtonText:'已经是最新版',
             cancelButtonText:lang == "en" ? "Close" :lang == "cn" ? "关闭" :"閉じる",
             closeOnConfirm:false,
             closeOnCancel:true
@@ -422,7 +425,6 @@ $(function() {
     var fileTree = false;
     var toolTree = false;
     $(".features").click(function() {
-        $(".header").css("overflow", "hidden");
         $("#file-action").removeClass("file-action-active");
         $(".dropdown").slideUp();
         fileTree = false;
@@ -434,12 +436,10 @@ $(function() {
             $(".topDropdown").hide();
             $(".topAction").removeClass("file-action-active");
             //
-            $(".header").css("overflow", "visible");
             $("#file-action").addClass("file-action-active");
             $(".dropdown").slideDown();
             fileTree = true;
         } else if (fileTree === true) {
-            $(".header").css("overflow", "hidden");
             $("#file-action").removeClass("file-action-active");
             $(".dropdown").slideUp();
             fileTree = false;
@@ -450,12 +450,10 @@ $(function() {
             fileTree = false;
             $(".topDropdown").hide();
             $(".topAction").removeClass("file-action-active");
-            $(".header").css("overflow", "visible");
             $("#tool-action").addClass("file-action-active");
             $(".tool-dropdown").slideDown();
             toolTree = true;
         } else if (toolTree === true) {
-            $(".header").css("overflow", "hidden");
             $("#tool-action").removeClass("file-action-active");
             $(".tool-dropdown").slideUp();
             toolTree = false;
