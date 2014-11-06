@@ -2,7 +2,7 @@
 
 ![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
 
-**(c) An Inie Inn Project**
+**An Inie Inn Project**
 
 Goto our forum to download latest version of **Miu Ange** : [Support Forum](https://miu.0x142857.com/forum)
 
