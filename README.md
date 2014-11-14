@@ -1,5 +1,9 @@
 ##Miu
 
+**Notice! Recently I've moved to a Mac so this project would probably be maintained discontinuously**
+
+**We hope that someone could join us and make Miu better**
+
 ![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
 
 Goto our forum to download latest version of **Miu Ange** : [Support Forum](https://miu.0x142857.com/forum)
