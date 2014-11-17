@@ -1,8 +1,6 @@
 ##Miu
 
-**Notice! Recently I've moved to a Mac so this project would probably be maintained discontinuously.**
-
-**We hope that someone could join us and make Miu better, together.**
+**Notice! We hope that someone could join us and make Miu better, together.**
 
 ![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
 
