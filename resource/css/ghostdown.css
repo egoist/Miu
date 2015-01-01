@@ -425,7 +425,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     font-size: 16px;
     right: 0;
     box-shadow: #edece4 -1px 0 0;
-    min-height: 100vmin;
+    min-height: 90vmin;
 }
 
 .entry-preview img {
