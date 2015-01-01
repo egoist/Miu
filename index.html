@@ -17,7 +17,7 @@
     <div class="override" style="display:none"></div>
 
     <div class="wrap">
-        <header class="header">
+        <header class="header unselectable">
             <span class="icon-menu" id="settings-trigger"></span>
 
             <div class="fl cps">
@@ -34,17 +34,17 @@
 
                         </li>
                         <!--
-                            <li id="tool-action" class="topAction"><a href="#" id="tool-action-href" class="topActionHref">
-                            <b>工具</b>
+                        <li id="tool-action" class="topAction"><a href="#" id="tool-action-href" class="topActionHref">
+                        <b>工具</b>
 
-                            </a>
-                            <ul class="tool-dropdown topDropdown">
-                                <li><span id="html-trigger">转换为 HTML</span></li>
-                                <li><span id="pdf-trigger">转换为 PDF</span></li>
-                                <li><span id="doc-trigger">转换为 DOC</span></li>
-                            </ul>
-                            </li>
-                            -->
+                        </a>
+                        <ul class="tool-dropdown topDropdown">
+                            <li><span id="html-trigger">转换为 HTML</span></li>
+                            <li><span id="pdf-trigger">转换为 PDF</span></li>
+                            <li><span id="doc-trigger">转换为 DOC</span></li>
+                        </ul>
+                        </li>
+                        -->
                         <input type="file" id="open_file" accept=".md,.markdown">
                         <input style="display:none" type="file" id="save_file" accept=".md,.markdown" nwsaveas>
                         <input style="display:none" type="file" id="save_html" accept=".html" nwsaveas>
@@ -64,7 +64,7 @@
             </div>
             <h1 class="current-file" data-save="false" data-sync-open="false">Miu</h1>
         </header>
-        <ul class="dropdown">
+        <ul class="dropdown unselectable">
             <li><span id="new-trigger">{{ 'NAV.file.option.new' | translate }}</span></li>
             <li><span id="open-trigger">{{ 'NAV.file.option.open' | translate }}</span></li>
             <li><span id="save-trigger">{{ 'NAV.file.option.save' | translate }}</span></li>
@@ -93,7 +93,7 @@
             </section>
         </div>
     </div><!--.wrap-->
-    <div class="settings">
+    <div class="settings unselectable">
         <div class="settings-top">
             <ul class="settings-tabs">
                 <div class="settings-sep"></div>

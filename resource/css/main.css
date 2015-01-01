@@ -10,6 +10,12 @@ body {
     margin: 0;
 }
 
+.unselectable {
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
     display: block;
 }
