@@ -340,19 +340,55 @@ $(function() {
             }
         });
     });
-    $(".current-file").click(function() {
-        $(this).attr("contentEditable", true).css("cursor", "text").focus();
-    });
-    $(".current-file").on("blur", function() {
-        $(this).attr("contentEditable", false).css("cursor", "pointer");
-        //$('#savenew_file').val($(this).html())
-        $("#savenew_file").attr("nwsaveas", $(this).html()).attr("accept", "");
-        if ($(this).data("save") == true) {
-            //已存在的文件重命名
-            var new_location = path.dirname($(this).data("location")) + "/" + $(this).html();
-            $(this).data("location", new_location);
+    $(".current-file").click(function () {
+        var _ = this;
+        if (_.editing) {
+            return;
+        }
+        _.editing = true;
+        if ($(_).width() > 300) {
+            $(_).animate({ 'width': '300px' }, 200);
+        }
+        var txt = $(_).text();
+        $(_).empty();
+        var inline_editor = document.createElement("input");
+        inline_editor.setAttribute('type', 'text');
+        inline_editor.className = "current-file";
+        inline_editor.value = txt;
+        $(_).append(inline_editor);
+        $(inline_editor)
+            .focus()
+            .on('blur', function () {
+                var txt_now = inline_editor.value;
+                if (!txt_now) { txt_now = txt; }
+                $(inline_editor).remove();
+                $(_).text(txt_now);
+                _.editing = false;
+                $("#savenew_file").attr("nwsaveas", $(_).html()).attr("accept", "");
+                if ($(_).data("save") == true) {
+                    //已存在的文件重命名
+                    var new_location = path.dirname($(_).data("location")) + "/" + $(_).html();
+                    $(_).data("location", new_location);
+                }
+            });
+    }).on('mouseover', function (e) {
+        if (!this.editing) {
+            var elem = $(this).clone().css({ "height": "auto", "width": "auto" }).appendTo("body");
+            var width = elem.width();
+            elem.remove();
+            console && console.log("current title width: " + width);
+            if (width > 300) {
+                $(this).css('text-overflow', 'initial').animate({ width: width + "px" }, 200);
+            }
+        }
+    })
+    .on('mouseout', function (e) {
+        if (!this.editing) {
+            $(this).css('text-overflow', 'ellipsis').animate({ width: "300px" }, 200);
         }
     });
+
+    ;
     $("body").keydown(function(e) {
         if ((e.ctrlKey || e.metaKey) && e.which === 83 && !e.shiftKey) {
             if ($(".current-file").data("save") == true) {

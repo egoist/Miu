@@ -515,29 +515,33 @@ a.osx-window-btn.green {
     margin-right: 20px;
 }
 
+.current-file, .current-file-input {
+    height: 26px;
+    overflow-x : hidden;
+    overflow-y : hidden;
+    border: 0;
+}
+
 .current-file {
-    cursor: pointer;
+    width: 300px;
     -webkit-app-region: no-drag;
     text-align: center;
     text-shadow: 0 1px #fff;
     font-size: 16px;
     margin: 0;
     font-size: 20px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 26px;
+    top: 25%;
     line-height: 26px;
     margin-top: -13px;
-    margin-left: -150px;
+    margin-left: auto;
     background-color: #fff;
     border-radius: 3px;
     color: #999;
     display: inline-block;
     color: #52C983;
     font-weight: 300;
+    text-overflow : ellipsis;
+    white-space: nowrap;
 }
 
 #open_file {
