@@ -369,24 +369,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
     }
 }
 
-
-@media (max-width: 860px), (max-width: 860px) {
-
-    .features .editor .outer {
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 800px), (max-width: 800px) {
-    .features .editor .outer {
-        padding: 0 30px;
-    }
-}
-
-@media (max-width: 400px), (max-width: 400px) {
-    .features .editor .outer {
-        padding: 0 15px;
-    }
+.outer, .editor, .features{
+    padding: 0;
 }
 
 .features .editor .editorwrap {
