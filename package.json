@@ -1,5 +1,5 @@
 {
-  "description": "",
+  "description": "Markdown Editor for Windows",
   "name": "Miu",
   "nodejs": true,
   "single-instance": true,
@@ -35,5 +35,18 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-stylus": "^2.0.0"
-  }
+  },
+  "scripts": {
+    "test": "gulp run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0x142857/Miu.git"
+  },
+  "author": "0x142857 <0x142857@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0x142857/Miu/issues"
+  },
+  "homepage": "https://github.com/0x142857/Miu"
 }
