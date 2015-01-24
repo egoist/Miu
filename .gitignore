@@ -1,6 +1,5 @@
 # NW.js #
 #########
-*.exe
 node_modules
 lib
 *.pak

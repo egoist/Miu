@@ -19,7 +19,7 @@ ul.dropdown {
   font-size: 14px;
   box-shadow: inset 0 -1px #d6d9de, inset 0px -2px rgba(255,255,255,0.2);
 }
-a:link {
+a {
   color: #333;
   text-decoration: none;
 }
