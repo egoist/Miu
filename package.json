@@ -9,15 +9,15 @@
     "resizable": true,
     "title": "Miu",
     "always-on-top": false,
-    "frame": false,
+    "frame": true,
     "height": 672,
     "visible": true,
     "as_desktop": true,
-    "toolbar": false,
+    "toolbar": true,
     "position": "center",
     "show_in_taskbar": true,
     "width": 1224,
-    "transparent": true,
+    "transparent": false,
     "icon": "miu.png"
   },
   "version": "0.1.4",
@@ -31,5 +31,9 @@
     "plugin": false
   },
   "main": "app://miu/index.html",
-  "node-main": ""
+  "node-main": "",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-stylus": "^2.0.0"
+  }
 }
