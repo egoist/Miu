@@ -1,7 +1,7 @@
 ##Miu
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/0x142857/Miu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**Notice! We hope that someone could join us and make Miu better, together.**
+**No longer maintained**
 
 ![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
 
