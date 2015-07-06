@@ -1,13 +1,7 @@
 ##Miu
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/0x142857/Miu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**No longer maintained**
-
-![Screenshot](https://miu.0x142857.com/img/miu-full-look.png)
-
-Goto our forum to download latest version of **Miu Ange** : [Support Forum](https://miu.0x142857.com/forum)
-
-Wiki for Miu users : [English version](https://github.com/0x142857/Miu/wiki)
+**No longer maintained** [**HIRE ME?**](http://code.insekai.com/#!code/ZGCc7GS)
 
 ---
 
