@@ -1,9 +1,9 @@
 ##Miu
 
 **Miu's successor: [Chelly](https://github.com/aprilorange/chelly), an elegant notes keeper with Markdown support**  
-**Chelly is using React and Electron to make things happen, you can join the team if you have related knowledge :)**
+**Chelly is using Vue, Webpack and Electron to make things happen, you can join the team if you have related knowledge :)**
 
-**No longer maintained** [**HIRE ME?**](http://code.insekai.com/#!code/ZGCc7GS)
+**This project is No longer maintained** [**HIRE ME?**](http://code.insekai.com/#!code/ZGCc7GS)
 
 ---
 
