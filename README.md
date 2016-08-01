@@ -1,7 +1,8 @@
 ##Miu
 
-**Miu's successor: [EME](https://github.com/egoist/eme), an elegant markdown editor**<br>
-**EME is using Vue, Webpack and Electron to make things happen, you can join the team if you have some related knowledge :)**
+**Miu's successor: [EME](https://github.com/egoist/eme), an elegant markdown editor**
+
+**EME is using Vue, Webpack and Electron to make things happen, contributions are always welcome :)**
 
 **This project is No longer maintained**
 
