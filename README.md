@@ -1,9 +1,9 @@
 ##Miu
 
-**Miu's successor: [Chelly](https://github.com/aprilorange/chelly), an elegant notes keeper with Markdown support**  
-**Chelly is using Vue, Webpack and Electron to make things happen, you can join the team if you have related knowledge :)**
+**Miu's successor: [EME](https://github.com/egoist/eme), an elegant markdown editor**<br>
+**EME is using Vue, Webpack and Electron to make things happen, you can join the team if you have some related knowledge :)**
 
-**This project is No longer maintained** [**HIRE ME?**](http://code.insekai.com/#!code/ZGCc7GS)
+**This project is No longer maintained**
 
 ---
 
@@ -30,42 +30,8 @@ https://github.com/rogerwang/node-webkit/
 
 ---
 
-###Donate
-
-I've spent hundreds of hours into developing Miu, considering it is filled with my love you may donate a cup of cola, yep I love cola.
-
-Here I accept Alipay, Paypal and Bitcoin.
-
-[![](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=i%400x142857%2ecom&lc=C2&amount=10%2e00¤cy_code=USD&button_subtype=services&bn=PP%2dBuyNowBF%3abtn_donate_LG%2egif%3aNonHosted)
-
-Alipay account email: i@0x142857.com
-
-Bitcoin address: [12ExMbLmtYsyyj4GTcGQrB64M4DsiAN3eN](http://blockexplorer.com/address/12ExMbLmtYsyyj4GTcGQrB64M4DsiAN3eN)
-
----
-
-###Licensed under MIT license.
+###License
 
 The MIT License (MIT)
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 
 
